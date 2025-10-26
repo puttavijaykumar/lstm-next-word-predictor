@@ -74,7 +74,7 @@ You can retrain or fine-tune the LSTM or GRU models using your own text dataset 
 
 ## Deployment
 
-This project can be deployed to cloud platforms supporting Django, such as **Render** or **Heroku**. Make sure to configure necessary **environment variables** (e.g., `SECRET_KEY`, database settings) and ensure proper setup for **serving static files** accordingly.
+This project can be deployed to cloud platforms supporting Django, such as **Render** . Make sure to configure necessary **environment variables** (e.g., `SECRET_KEY`, database settings) and ensure proper setup for **serving static files** accordingly.
 
 ---
 
