@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Next Word Predictor</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 520px;
+            margin: 60px auto 0 auto;
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 1.5px 6px rgba(0,0,0,0.02);
+            padding: 36px 36px 28px 36px;
+        }
+        h1 {
+            text-align: center;
+            color: #22223b;
+            margin-bottom: 24px;
+            letter-spacing: 1px;
+        }
+        form {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        input[type="text"] {
+            flex: 1;
+            padding: 12px;
+            border: 1.5px solid #e0e1dd;
+            border-radius: 7px 0 0 7px;
+            font-size: 1em;
+            outline: none;
+            transition: border 0.2s;
+        }
+        input[type="text"]:focus {
+            border-color: #48bfe3;
+        }
+        button {
+            background: linear-gradient(90deg, #4361ee 0%, #48bfe3 100%);
+            color: white;
+            border: none;
+            border-radius: 0 7px 7px 0;
+            padding: 12px 22px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(67,97,238,0.08);
+            transition: background 0.2s, box-shadow 0.2s;
+        }
+        button:hover {
+            background: linear-gradient(90deg, #48bfe3 0%, #4361ee 100%);
+            box-shadow: 0 4px 16px rgba(67,97,238,0.13);
+        }
+        .result {
+            margin-top: 36px;
+            padding: 18px 15px;
+            background: #e7f5ff;
+            border-left: 5px solid #4361ee;
+            border-radius: 8px;
+            font-size: 1.15em;
+            color: #22223b;
+            font-weight: 500;
+            transition: background 0.3s;
+        }
+        .instructions {
+            font-size: 0.95em;
+            color: #939393;
+            margin-bottom: 18px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Next Word Predictor</h1>
+        <div class="instructions">
+            Type a phrase and click <b>Predict</b> to generate the next possible word. Try incomplete sentences for best results!
+        </div>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="input_text" placeholder="Enter your phrase here..." value="{{ input_text }}" required>
+            <button type="submit">Predict</button>
+        </form>
+        {% if prediction %}
+        <div class="result">
+            <strong>Predicted next word:</strong> {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
